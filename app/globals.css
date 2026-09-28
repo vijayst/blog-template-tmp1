@@ -1,0 +1,291 @@
+@import "tailwindcss";
+@import "@radix-ui/themes/styles.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+.back-image {
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+  top: 0;
+  left: 0;
+  height: 100%; /* Ensure it covers the full page */
+  width: 100%;
+  position: absolute;
+  z-index: -1; /* Push it behind other content */
+}
+
+.docs {
+  margin: 24px auto;
+  max-width: 640px;
+  padding: 16px;
+}
+
+.docs h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.docs h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+.docs h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 6px 0;
+}
+
+.docs h4 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 4px 0;
+}
+
+.docs p {
+  margin: 8px 0;
+}
+
+.docs ul {
+  list-style-type: disc;
+  margin-left: 24px;
+}
+
+/* ------------------------------------------------------------------
+   Core layout – keep the reading column at a comfortable width
+   ------------------------------------------------------------------ */
+.message {
+  /* Center the post and limit the line‑length */
+  max-width: 720px;
+  margin: 2rem auto;         /* vertical spacing & centering */
+  padding: 0;          /* breathing room on narrow screens */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont,
+               "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;            /* 16 px base */
+  line-height: 1.68;          /* comfortable vertical rhythm */
+  color: var(--txt-primary, #212529);
+  background: var(--bg-primary, #fff);
+}
+
+/* ------------------------------------------------------------------
+   Dark‑mode support (prefers‑color‑scheme)
+   ------------------------------------------------------------------ */
+/*
+@media (prefers-color-scheme: dark) {
+  .message {
+    --bg-primary: #1e1e1e;
+    --txt-primary: #e4e4e4;
+    --txt-muted: #a8a8a8;
+    --link: #58a6ff;
+    --border: #333;
+    --blockquote-bg: #2a2a2a;
+    --code-bg: #2d2d2d;
+  }
+}
+*/
+
+/* ------------------------------------------------------------------
+   Headings – visual hierarchy + anchor link helper
+   ------------------------------------------------------------------ */
+.message h1,
+.message h2,
+.message h3,
+.message h4,
+.message h5,
+.message h6 {
+  margin-top: 2.5rem;
+  margin-bottom: .8rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--txt-primary);
+  scroll-margin-top: 4rem;      /* avoids hidden heading when jumped to */
+}
+
+.message h1 { font-size: 2.25rem; }
+.message h2 { font-size: 1.875rem; }
+.message h3 { font-size: 1.5rem; }
+.message h4 { font-size: 1.25rem; }
+.message h5 { font-size: 1.125rem; }
+.message h6 { font-size: 1rem; }
+
+/* optional: tiny “#” link that appears on hover */
+.message h1 a,
+.message h2 a,
+.message h3 a,
+.message h4 a,
+.message h5 a,
+.message h6 a {
+  text-decoration: none;
+  color: inherit;
+  visibility: hidden;
+}
+.message h1:hover a,
+.message h2:hover a,
+.message h3:hover a,
+.message h4:hover a,
+.message h5:hover a,
+.message h6:hover a {
+  visibility: visible;
+}
+
+/* ------------------------------------------------------------------
+   Paragraphs & basic typography
+   ------------------------------------------------------------------ */
+.message p {
+  margin: 0 0 1.4rem;
+}
+
+/* Inline code */
+.message p code,
+.message li code,
+.message td code {
+  background: var(--code-bg, #f6f8fa);
+  color: #c7254e;
+  padding: .15em .35em;
+  border-radius: 4px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: .92em;
+}
+
+/* ------------------------------------------------------------------
+   Links
+   ------------------------------------------------------------------ */
+.message a {
+  color: var(--link, #0066cc);
+  text-decoration: underline;
+  transition: color .15s ease-in-out;
+}
+.message a:hover {
+  color: var(--link-hover, #004999);
+}
+
+/* ------------------------------------------------------------------
+   Lists – nice spacing & indents
+   ------------------------------------------------------------------ */
+.message ul,
+.message ol {
+  margin: 0 0 1.4rem 1.75rem;
+  padding-left: 0;
+}
+.message li {
+  margin-bottom: .4rem;
+}
+
+/* ------------------------------------------------------------------
+   Blockquote – call‑out style
+   ------------------------------------------------------------------ */
+.message blockquote {
+  margin: 1.6rem 0;
+  padding: .8rem 1.2rem;
+  border-left: 4px solid #6c71c4;
+  background: var(--blockquote-bg, #f8f9fa);
+  color: var(--txt-muted, #555);
+  font-style: italic;
+}
+
+/* ------------------------------------------------------------------
+   Horizontal rule – subtle separator
+   ------------------------------------------------------------------ */
+.message hr {
+  border: 0;
+  border-top: 1px solid var(--border, #ddd);
+  margin: 2.5rem 0;
+}
+
+/* ------------------------------------------------------------------
+   Images – responsive + optional caption
+   ------------------------------------------------------------------ */
+.message img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.6rem auto;
+  border-radius: 4px;
+}
+
+/* If you wrap an image + caption inside <figure> */
+.message figure {
+  margin: 1.6rem 0;
+  text-align: center;
+}
+.message figure img { margin-bottom: .5rem; }
+.message figure figcaption {
+  font-size: .9rem;
+  color: var(--txt-muted);
+}
+
+/* ------------------------------------------------------------------
+   Tables – simple, readable, scrollable on overflow
+   ------------------------------------------------------------------ */
+.message .table-wrapper {
+  overflow-x: auto;
+  margin: 1.6rem 0;
+}
+.message table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .96rem;
+}
+.message th,
+.message td {
+  padding: .75rem 1rem;
+  border: 1px solid var(--border, #e2e2e2);
+}
+.message th {
+  background: #f1f3f5;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* ------------------------------------------------------------------
+   Code blocks – syntax‑highlight friendly (no JS required)
+   ------------------------------------------------------------------ */
+.message pre {
+  background: var(--code-bg, #f6f8fa);
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  margin: 1.6rem 0;
+}
+.message pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* ------------------------------------------------------------------
+   Inline utilities (optional)
+   ------------------------------------------------------------------ */
+.message .center { text-align: center; }
+.message .right  { text-align: right; }
+.message .small  { font-size: .85em; color: var(--txt-muted); }
+
+/* ------------------------------------------------------------------
+   Responsive tweaks – tighten margins on very small screens
+   ------------------------------------------------------------------ */
+@media (max-width: 480px) {
+  .message {
+    padding: 0;
+    margin: 1.4rem auto;
+  }
+  .message h1 { font-size: 1.9rem; }
+  .message h2 { font-size: 1.6rem; }
+}
