@@ -1,5 +1,10 @@
 const pat = process.env.CHATBLOGR_PAT;
 
+if (!pat) {
+  console.error("CHATBLOGR_PAT is not set");
+  process.exit(1);
+}
+
 async function getBlog() {
   const res = await fetch("https://chatblogr.com/api/bypass/blog", {
     headers: {

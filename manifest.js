@@ -5,6 +5,11 @@ const siteName = process.env.SITE_NAME
 const shortName = process.env.SHORT_NAME ?? siteName;
 
 async function updateManifest() {
+  if (!siteName) {
+    console.log("SITE_NAME is not set, leaving site.webmanifest unchanged");
+    return;
+  }
+
   try {
     // Read the manifest file
     const manifestContent = fs.readFileSync(manifestPath, "utf-8");

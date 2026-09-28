@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run resize && npm run manifest && npm run generate:ads && next build",
     "start": "next start",
     "lint": "eslint",
     "deploy": "rm -rf .next .vercel && npx vercel build && npx vercel deploy --prod --prebuilt --archive=tgz",
