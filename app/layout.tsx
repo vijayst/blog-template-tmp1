@@ -7,6 +7,8 @@ import { getBlog } from "@/lib/utils";
 import { Metadata, ResolvingMetadata } from "next";
 import { RecaptchaScript } from "@/components/RecaptchaScript";
 
+export const dynamic = "force-dynamic";
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",

@@ -8,37 +8,6 @@ type Props = Promise<{
   id: string;
 }>;
 
-export async function generateStaticParams() {
-  try {
-    const blog = await getBlog();
-    
-    if (!blog || !blog.posts) {
-      console.warn('Blog data not available for static generation');
-      return [];
-    }
-    
-    return blog.posts
-      .filter((post: { type?: string }) => post.type === "kb" || post.type === "ex")
-      .flatMap((post: { slug: string; redirects: string[] }) => {
-        const posts = [];
-        if (post.redirects) {
-          posts.push(
-            ...post.redirects.map((redirect) => ({
-              id: redirect,
-            })),
-          );
-        }
-        posts.push({
-          id: post.slug,
-        });
-        return posts;
-      });
-  } catch (error) {
-    console.error('Error generating static params:', error);
-    return [];
-  }
-}
-
 export async function generateMetadata({
   params,
 }: {
